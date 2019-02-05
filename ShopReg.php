@@ -15,6 +15,22 @@
   </style>
 </head>
 <body>
+  <?php
+
+include 'connection.php';
+
+      if(isset($_POST['submitbtn'])){
+        $shopname=$_POST['sname'];
+        $shopAdd=$_POST['sadd'];
+        $shopSpc=$_POST['sspc'];
+        $shopTag=$_POST['stags'];
+
+        $query="INSERT INTO shop (shop_name,shop_Add,shop_Spc,shop_Tags) VALUES ('{$shopname}','{$shopAdd}','{$shopSpc}','{$shopTag}')";
+        $result=mysqli_query($connect,$query);
+
+      }
+
+  ?>
 <div id="nav-bar">
 	<nav class="navbar navbar-light" style="background-color:#B0E0E6;">
   <!-- Navbar content -->
@@ -35,41 +51,41 @@
 <div class="jumbotron" style="width: 800px; margin-top: 50px; margin-left: 280px; height: 500px;" >
   <h1 style="font-family: monospace">Shop Details</h1>
  <br>
-  <form>
+  <form method="post">
     <div class="form-group row">
     <label for="inputName3" class="col-sm-2 col-form-label">Name</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputName3" placeholder="Name">
+      <input type="text" class="form-control" id="inputName3" placeholder="Name" name="sname">
     </div>
   </div>
   <div class="form-group row">
     <label for="inputAddress3" class="col-sm-2 col-form-label">Address</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputAddress3" placeholder="Address">
+      <input type="text" class="form-control" id="inputAddress3" placeholder="Address" name="sadd">
     </div>
   </div>
   <div class="form-group row">
     <label for="inputspc3" class="col-sm-2 col-form-label">Speciality</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputspc3" placeholder="Speciality">
+      <input type="text" class="form-control" id="inputspc3" placeholder="Speciality" name="sspc">
     </div>
   </div>
   <div class="form-group row">
     <label for="inputtag3" class="col-sm-2 col-form-label">Tags</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputtag3" placeholder="Tags">
+      <input type="text" class="form-control" id="inputtag3" placeholder="Tags" name="stags">
     </div>
   </div>
- <form>
+ 
   <div class="form-group">
     <label for="exampleFormControlFile1">Upload Photo</label>
     <input type="file" class="form-control-file" id="exampleFormControlFile1">
   </div>
-</form>
+
   
   <div class="form-group row">
     <div class="col-sm-10">
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary" name="submitbtn">Submit</button>
     </div>
   </div>
 </form>

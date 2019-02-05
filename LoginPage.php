@@ -16,6 +16,11 @@
   </style>
 </head>
 <body>
+
+<?php
+include 'connection.php';
+?>
+
 <div id="nav-bar">
   <nav class="navbar navbar-light" style="background-color:#B0E0E6;">
   <!-- Navbar content -->
