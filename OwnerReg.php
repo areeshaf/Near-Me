@@ -19,7 +19,7 @@
 <div id="nav-bar">
 	<nav class="navbar navbar-light" style="background-color:#B0E0E6;">
   <!-- Navbar content -->
-   <a class="navbar-brand" href="index.php">
+   <a class="navbar-brand" href="home.php">
     <img src="images/nearmeicon.png" width="30" height="30" class="d-inline-block align-top" alt="">
     <b>Near Me</b>
   </a>
