@@ -24,9 +24,19 @@ include 'connection.php';
         $shopAdd=$_POST['sadd'];
         $shopSpc=$_POST['sspc'];
         $shopTag=$_POST['stags'];
+        $image_tmp = $_FILES['image']['tmp_name'];   //it will give temp address of the file
+        $image = $_FILES['image']['name'];   //it will store the name of the file
 
-        $query="INSERT INTO shop (shop_name,shop_Add,shop_Spc,shop_Tags) VALUES ('{$shopname}','{$shopAdd}','{$shopSpc}','{$shopTag}')";
+       move_uploaded_file($image_tmp, "images/$image");
+
+        $query="INSERT INTO shop (owner_id,shop_name,shop_Add,shop_Spc,shop_Tags,shop_image) VALUES ( 1 , '{$shopname}','{$shopAdd}','{$shopSpc}','{$shopTag}','{$image}')";
         $result=mysqli_query($connect,$query);
+
+        if(!$result){
+          echo "Not Submitted" ;
+        }
+
+         
 
       }
 
@@ -51,7 +61,9 @@ include 'connection.php';
 <div class="jumbotron" style="width: 800px; margin-top: 50px; margin-left: 280px; height: 500px;" >
   <h1 style="font-family: monospace">Shop Details</h1>
  <br>
-  <form method="post">
+
+
+  <form method="post" enctype="multipart/form-data">
     <div class="form-group row">
     <label for="inputName3" class="col-sm-2 col-form-label">Name</label>
     <div class="col-sm-10">
@@ -59,7 +71,7 @@ include 'connection.php';
     </div>
   </div>
   <div class="form-group row">
-    <label for="inputAddress3" class="col-sm-2 col-form-label">Address</label>
+    <label class="col-sm-2 col-form-label">Address</label>
     <div class="col-sm-10">
       <input type="text" class="form-control" id="inputAddress3" placeholder="Address" name="sadd">
     </div>
@@ -78,8 +90,8 @@ include 'connection.php';
   </div>
  
   <div class="form-group">
-    <label for="exampleFormControlFile1">Upload Photo</label>
-    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+    <label >Upload Photo</label>
+    <input type="file" class="form-control-file" name="image">
   </div>
 
   
@@ -89,6 +101,7 @@ include 'connection.php';
     </div>
   </div>
 </form>
+
 </div>
 <br><br><br>
 <div class="footer" style="background-color: #B0E0E6;">

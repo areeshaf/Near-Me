@@ -53,17 +53,30 @@
  <div class="row">
 
    <div class="col-sm-7">
+    <?php
+
+    $query="SELECT * FROM shop";
+    $result=mysqli_query( $connect , $query);
+    while ($row = mysqli_fetch_assoc($result)) {
+      
+      $shop_name = $row['shop_name'];
+      $shop_Add= $row['shop_add'];
+      $shop_Spc=$row['shop_spc'];
+      $shop_image=$row['shop_image']
+      
+
+    ?>
     <div class="card">
       <div class="card-body">
         <div class="row">
           <div class="col-sm-4">
-             <img src="https://thumbs.dreamstime.com/z/shop-building-colorful-isolated-white-33822015.jpg" height="160" width="160">
+             <img src='<?php echo "images/{$shop_image}" ;?>' height="160" width="160">
           </div>
           <div class="col-sm-8">
-            <h2> My Shop</h2>
-            <h6>My shop is a small candy shop with tasty candies</h6>
+            <h3 ><?php echo $shop_name; ?></h3>
+            <h6><?php echo $shop_Spc; ?></h6>
             <br>
-            <span class="text-left">New Delhi, India.</span>
+            <span class="text-left"><?php echo $shop_Add; ?></span>
             <div class="float-right">
              <span>Mr. ABCD</span><br>
              <span>Contact : 9891950609</span>
@@ -74,26 +87,11 @@
       </div>
     </div>
     <br>
-    <div class="card">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-sm-4">
-             <img src="https://thumbs.dreamstime.com/z/shop-building-colorful-isolated-white-33822015.jpg" height="160" width="160">
-          </div>
-          <div class="col-sm-8">
-            <h2> My Shop</h2>
-            <h6>My shop is a small candy shop with tasty candies</h6>
-            <br>
-              <span class="text-left">New Delhi, India.</span>
-            <div class="float-right">
-             <span>Mr. ABCD</span><br>
-             <span>Contact : 9891950609</span>
-          </div>
-          </div>
-        </div>
-      
-      </div>
-    </div>
+
+    <?php } ?>
+    
+
+
    </div>
 
    <div class="col-sm-1"></div>
