@@ -1,25 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Owner Page</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<?php  include 'includes/header.php' ;?>
 
-  <link rel="icon" type="gif/image" href="images/nearmeicon.png">
 
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-  <style type="text/css">
-    .rightNavMenu a{
-      color: black;
-    }
-  </style>
 
-</head>
-<body>
-  <?php
-      include 'connection.php';
 
-  ?>
+
+
+
 <div id="nav-bar">
 	<nav class="navbar navbar-light" style="background-color:#B0E0E6;">
   <!-- Navbar content -->
@@ -109,16 +96,4 @@ if(!$result){
 </form>
 </div>
 
-<br><br><br>
-<div class="footer" style="background-color: #B0E0E6;">
-  <br>
-  <div class="container">
-    <h2 style="font-family: monospace;"><b>Near Me</b></h2>
-    <p>This website gives a list of shops near you anytime.<br>All rights reserved <i class="far fa-copyright"></i> 2019</p>
-    <br>
-    <p>1234 New Delhi,<br>India.</p>
-  </div>
-  <br>
-</div>
-</body>
-</html>
+<?php include 'includes/footer.php' ; ?>
