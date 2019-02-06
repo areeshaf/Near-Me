@@ -33,15 +33,25 @@
    <div class="col-sm-7">
     <?php
 
-    $query="SELECT * FROM shop";
+    if(isset($_POST['search'])){
+
+      $search_this = $_POST['search_this'];
+
+
+    $query="SELECT * FROM shop WHERE shop_tags LIKE '%$search_this%' ";
     $result=mysqli_query( $connect , $query);
-    while ($row = mysqli_fetch_assoc($result)) {
-      
-      $shop_name = $row['shop_name'];
-      $shop_Add= $row['shop_add'];
-      $shop_Spc=$row['shop_spc'];
-      $shop_image=$row['shop_image']
-      
+
+    if(mysqli_num_rows($result) > 0){
+        while ($row = mysqli_fetch_assoc($result)) {
+          
+          $shop_name = $row['shop_name'];
+          $shop_Add= $row['shop_add'];
+          $shop_Spc=$row['shop_spc'];
+          $shop_image=$row['shop_image'];
+          
+
+        
+
 
     ?>
     <div class="card">
@@ -66,7 +76,20 @@
     </div>
     <br>
 
-    <?php } ?>
+    <?php } 
+
+  } 
+  else { ?>
+
+   <div class="alert alert-danger">
+     <b>No Results Found !</b>
+   </div>
+
+
+
+  <?php } 
+
+}?>
     
 
 
@@ -74,7 +97,7 @@
 
    <div class="col-sm-1"></div>
 
-   <div class="col-sm-4">
+    <div class="col-sm-4">
      <div class="card border-info mb-3">
   <div class="card-header" ><b>Search For Shops</b></div>
   <div class="card-body text-info">
