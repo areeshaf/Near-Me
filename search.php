@@ -38,7 +38,7 @@
       $search_this = $_POST['search_this'];
 
 
-    $query="SELECT * FROM shop WHERE shop_tags LIKE '%$search_this%' ";
+    $query="SELECT * FROM shop WHERE (shop_tags LIKE '%$search_this%') OR (shop_add LIKE '%$search_this%')";
     $result=mysqli_query( $connect , $query);
 
     if(mysqli_num_rows($result) > 0){
