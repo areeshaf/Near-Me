@@ -1,30 +1,6 @@
 <?php include 'includes/header.php' ;?>
 
-
-<?php
-
-      if(isset($_POST['submitbtn'])){
-        $shopname=$_POST['sname'];
-        $shopAdd=$_POST['sadd'];
-        $shopSpc=$_POST['sspc'];
-        $shopTag=$_POST['stags'];
-        $image_tmp = $_FILES['image']['tmp_name'];   //it will give temp address of the file
-        $image = $_FILES['image']['name'];   //it will store the name of the file
-
-       move_uploaded_file($image_tmp, "images/$image");
-
-        $query="INSERT INTO shop (owner_id,shop_name,shop_Add,shop_Spc,shop_Tags,shop_image) VALUES ( 1 , '{$shopname}','{$shopAdd}','{$shopSpc}','{$shopTag}','{$image}')";
-        $result=mysqli_query($connect,$query);
-
-        if(!$result){
-          echo "Not Submitted" ;
-        }
-
-         
-
-      }
-
-  ?>
+  
 <div id="nav-bar">
 	<nav class="navbar navbar-light" style="background-color:#B0E0E6;">
   <!-- Navbar content -->
@@ -41,6 +17,32 @@
 </div>
 </nav>
 </div>
+<?php
+
+if(isset($_POST['submitbtn'])){
+        $shopname=$_POST['sname'];
+        $shopAdd=$_POST['sadd'];
+        $shopSpc=$_POST['sspc'];
+        $shopTag=$_POST['stags'];
+        $image_tmp = $_FILES['image']['tmp_name'];   //it will give temp address of the file
+        $image = $_FILES['image']['name'];   //it will store the name of the file
+
+       move_uploaded_file($image_tmp, "images/$image");
+
+        $query="INSERT INTO shop (owner_id,shop_name,shop_Add,shop_Spc,shop_Tags,shop_image) VALUES ( 1 , '{$shopname}','{$shopAdd}','{$shopSpc}','{$shopTag}','{$image}')";
+        $result=mysqli_query($connect,$query);
+if($result){?>
+
+          <div class="alert alert-success" role="alert" style="width: 800px; margin-top: 50px; margin-left: 280px; height: 50px;">
+            Shop Registered!!
+          </div>
+          
+       <?php }else{?>
+          <div class="alert alert-danger" role="alert" style="width: 800px; margin-top: 50px; margin-left: 280px; height: 50px;">
+            Shop not Registered!!
+          </div>
+       <?php }}
+        ?>
 
 <div class="jumbotron" style="width: 800px; margin-top: 50px; margin-left: 280px; height: 500px;" >
   <h1 style="font-family: monospace">Shop Details</h1>
