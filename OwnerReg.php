@@ -32,11 +32,24 @@ if(isset($_POST['signup'])){
         $usercontact=$_POST['mobno'];
         $useremail=$_POST['useremail'];
         $userpswd=$_POST['userpswd'];
-
+        $flag=0;
+        $queryy="SELECT * FROM user";
+          $resultt=mysqli_query($connect,$queryy);
+          while($row=mysqli_fetch_assoc($resultt)){
+            $useremaildb=$row['user_email'];
+            if($useremaildb==$useremail){
+              $flag=1;
+              echo '<div class="alert alert-danger" role="alert" style="width: 800px; margin-top: 50px; margin-left: 280px; height: 50px;">
+            Email already exists!! Enter a new email.
+          </div>';
+          break;
+            }
+          }
+          if($flag!=1){
         $query="INSERT INTO user (user_name,user_username,user_contact,user_email,user_pass) VALUES ('{$name}','{$user_name}','{$usercontact}','{$useremail}','{$userpswd}')";
         $result=mysqli_query($connect,$query);
         
-        echo '<div></div>';
+       
 if(!$result){
 
           echo '<div class="alert alert-secondary" role="alert" style="width: 800px; margin-top: 50px; margin-left: 280px; height: 50px;">
@@ -44,11 +57,16 @@ if(!$result){
                 </div>';
           die();
         }else{
+
+          
+          
           echo '<div class="alert alert-success" role="alert" style="width: 800px; margin-top: 50px; margin-left: 280px; height: 50px;">
             Registration successful!
           </div>';
+        
         }
       }
+    }
         ?>
 
 <div class="jumbotron" style="width: 800px; margin-top: 50px; margin-left: 280px; height: 520px;" >
