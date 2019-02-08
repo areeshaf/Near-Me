@@ -37,10 +37,16 @@ if(isset($_POST['login'])){
       //$result=mysqli_query($connect,$query);
       $row=mysqli_fetch_assoc($result);
       $dbuser_pass=$row['user_pass'];
-      if($user_pass==$dbuser_pass){?>
-        <div class = "alert alert-success" style="width: 800px; margin-top: 50px; margin-left: 280px; height: 50px;">
-    Logged In!!;
-    </div>;<?php
+      if($user_pass==$dbuser_pass){
+        // <div class = "alert alert-success" style="width: 800px; margin-top: 50px; margin-left: 280px; height: 50px;">
+    //Logged In!!;
+    //</div>; 
+
+    $_SESSION['id']=$row['user_id'];
+
+    header("Location: ownerprofile.php");
+
+    
       }else{?>
         <div class = "alert alert-danger" style="width: 800px; margin-top: 50px; margin-left: 280px; height: 50px;">
     Password Incorrect!!;
