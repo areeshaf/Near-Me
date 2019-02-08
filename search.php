@@ -23,9 +23,11 @@ if(isset($_SESSION['id'])){
   <div class="rightNavMenu">
   <ul class="nav justify-content-end">
   <li class="nav-item">
+    <a class="nav-link" href="ownerprofile.php">
     <?php
     if(isset($_SESSION['id'])){
       echo $userlogin;
+      echo "</a>";
     }
 
 else {

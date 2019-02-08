@@ -26,7 +26,7 @@ $query="SELECT * FROM user WHERE user_id = $id";
   <div class="rightNavMenu">
   <ul class="nav justify-content-end">
   <li class="nav-item">
-    <a class="nav-link" href="#" style="color: black;">
+    <a class="nav-link" href="ownerprofile.php" style="color: black;">
 
       <?php 
       if (isset($_SESSION['id'])) {
@@ -54,22 +54,34 @@ $query="SELECT * FROM user WHERE user_id = $id";
 
       <h2 style="font-family: monospace;"><b><?php echo $userlogin; ?></b></h2>
 
-
   <div class="row">
 
     <div class="col-sm-8">
       <br><br>
+      <?php 
+      $query="SELECT * FROM shop WHERE owner_id= $id";
+      $result=mysqli_query($connect,$query);
+      if($result){
+        while($row=mysqli_fetch_assoc($result)){
+          $shop_name=$row['shop_name'];
+          $shop_desc=$row['shop_spc'];
+          $shop_add=$row['shop_add'];
+          $shop_img=$row['shop_image'];
+
+       ?>
+
+
       <div class="card">
       <div class="card-body">
         <div class="row">
           <div class="col-sm-4">
-             <img src="images/shop.jpg" height="160" width="160">
+             <img src='<?php echo "images/{$shop_img}" ; ?>' height="160" width="160">
           </div>
           <div class="col-sm-8">
-            <h3 >Shop Name</h3>
-            <h6>The shop description here.</h6>
+            <h3 ><?php echo $shop_name;   ?></h3>
+            <h6><?php echo $shop_desc;   ?></h6>
             <br>
-            <span class="text-left">Shop Address here.</span>
+            <span class="text-left"><?php echo $shop_add; ?></span>
             <div class="float-right">
              <span>Mr. ABCD</span><br>
              <span>Contact : 9891950609</span>
@@ -81,30 +93,13 @@ $query="SELECT * FROM user WHERE user_id = $id";
       </div>
     </div>
     <br>
-    <div class="card">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-sm-4">
-             <img src="images/shop.jpg" height="160" width="160">
-          </div>
-          <div class="col-sm-8">
-            <h3 >Shop Name</h3>
-            <h6>The shop description here.</h6>
-            <br>
-            <span class="text-left">Shop Address here.</span>
-            <div class="float-right">
-             <span>Mr. ABCD</span><br>
-             <span>Contact : 9891950609</span>
-          </div>
-          </div>
-        </div>
-      
-      </div>
-    </div>
-    <br>
-    </div>
+     
+    <?php } 
+  } 
+  ?>
+   
 
-    <div class="col-sm-4">
+    <!-- <div class="col-sm-4">
       <br><br><br><br>
       <button class="btn btn-info">EDIT</button>
       
@@ -113,14 +108,15 @@ $query="SELECT * FROM user WHERE user_id = $id";
       <button class="btn btn-info">EDIT</button>
       
       <button class="btn btn-danger">DELETE</button>
-    </div>
+    </div> -->
     
-
+</div>
 
   </div>
 
 
 </div>
+
 
 
 

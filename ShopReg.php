@@ -23,7 +23,7 @@ if(isset($_SESSION['id'])){
   <div class="rightNavMenu">
   <ul class="nav justify-content-end">
   <li class="nav-item">
-    <a class="nav-link" href="#">
+    <a class="nav-link" href="ownerprofile.php">
       <?php
 
       if(isset($_SESSION['id'])){
@@ -53,7 +53,7 @@ if(isset($_POST['submitbtn'])){
 
        move_uploaded_file($image_tmp, "images/$image");
 
-        $query="INSERT INTO shop (owner_id,shop_name,shop_Add,shop_Spc,shop_Tags,shop_image) VALUES ( 1 , '{$shopname}','{$shopAdd}','{$shopSpc}','{$shopTag}','{$image}')";
+        $query="INSERT INTO shop (owner_id,shop_name,shop_Add,shop_Spc,shop_Tags,shop_image) VALUES ( $id , '{$shopname}','{$shopAdd}','{$shopSpc}','{$shopTag}','{$image}')";
         $result=mysqli_query($connect,$query);
 if($result){?>
 
