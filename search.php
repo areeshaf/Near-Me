@@ -1,4 +1,17 @@
 <?php include 'includes/header.php';?>
+<?php
+
+if(isset($_SESSION['id'])){
+  $id=$_SESSION['id'];
+  $query="SELECT * FROM user WHERE user_id= $id";
+  $result=mysqli_query($connect,$query);
+  if($result){
+    $row=mysqli_fetch_assoc($result);
+    $userlogin=$row['user_name'];
+  }
+}
+
+?>
 
 <div id="nav-bar">
 	<nav class="navbar navbar-light" style="background-color:#B0E0E6;">
@@ -10,11 +23,19 @@
   <div class="rightNavMenu">
   <ul class="nav justify-content-end">
   <li class="nav-item">
+    <?php
+    if(isset($_SESSION['id'])){
+      echo $userlogin;
+    }
+
+else {
+    ?>
     <a class="nav-link" href="LoginPage.php">Login</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="OwnerReg.php">Sign Up</a>
   </li>
+  <?php } ?>
 </ul>
 </div>
 </nav>
