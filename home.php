@@ -79,6 +79,20 @@ else {
 }
 }?>
 
+<?php
+if(isset($_GET['delete'])){
+  if($_GET['delete']=="success"){
+    ?>
+    <div class="alert alert-success" role="alert">
+            Account deleted successfully!
+          </div>
+
+    <?php
+  }
+}
+
+?>
+
 <br>
   <h1 class="display-4 text-center">Welcome to Near Me</h1>
 

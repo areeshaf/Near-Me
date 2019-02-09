@@ -88,6 +88,7 @@ $query="SELECT * FROM user WHERE user_id = $id";
     </div>
   </div>
 </div>
+      
       <br><br>
       <div class="card border-info mb-3" style="max-width: 25rem;">
   <div class="card-header"><b>Search For Shops</b></div>
@@ -114,9 +115,12 @@ $query="SELECT * FROM user WHERE user_id = $id";
       
 <br><br>
       <?php 
-      $query="SELECT * FROM shop WHERE owner_id= $id";
+      if(isset($_POST['search'])){
+        $search_this=$_POST['search_this'];
+      
+      $query="SELECT * FROM shop WHERE (owner_id= $id) AND (shop_name LIKE '%$search_this%')";
       $result=mysqli_query($connect,$query);
-      if($result){
+      if(mysqli_num_rows($result)>0){
         while($row=mysqli_fetch_assoc($result)){
           $shop_name=$row['shop_name'];
           $shop_desc=$row['shop_spc'];
@@ -149,7 +153,12 @@ $query="SELECT * FROM user WHERE user_id = $id";
     <br>
      
     <?php } 
-  } 
+  } else{?>
+      <div class="alert alert-danger">
+        <b>No Result Found!!</b>
+      </div>
+  <?php 
+}}
   ?>
    
 </div>
