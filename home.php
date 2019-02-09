@@ -20,22 +20,37 @@ if(isset($_SESSION['id'])){
     <img src="images/nearmeicon.png" width="30" height="30" class="d-inline-block align-top" alt="">
     Near Me
   </a>
+
   <div class="rightNavMenu">
   <ul class="nav justify-content-end">
-  <li class="nav-item">
-    <a class="nav-link" href="ownerprofile.php" style="color: black;">
+  
 
     <?php
-    if(isset($_SESSION['id'])){
+    if(isset($_SESSION['id'])){?>
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="ownerprofile.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <?php 
       echo $userlogin;
-      echo "</a>";
+      ?>
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <a class="dropdown-item" href="ownerprofile.php">My Profile</a>
+      <a class="dropdown-item" href="logout.php">Logout</a>
+      </div>
+      
+    </li>
+    <li class="nav-item">
+
+    <a class="nav-link" href="logout.php">Logout</a>
+  </li>
+    <?php
     }
 
 
 else {
     ?>
 
-
+    <li class="nav-item">
 
     <a class="nav-link" href="LoginPage.php">Login</a>
   </li>
@@ -50,11 +65,25 @@ else {
 
 
 <div class="container">
+  <br>
+  <?php
+
+  if(isset($_GET['logout'])){
+    if($_GET['logout']=="success"){
+  ?>
+<div class="alert alert-success" role="alert">
+            Successfully Logged Out!
+          </div>
+
+<?php
+}
+}?>
 
 <br>
   <h1 class="display-4 text-center">Welcome to Near Me</h1>
 
   <br><br>
+  
 
  <div class="row">
 

@@ -20,14 +20,24 @@ if(isset($_SESSION['id'])){
     <img src="images/nearmeicon.png" width="30" height="30" class="d-inline-block align-top" alt="">
     Near Me
   </a>
+  <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="home.php" style="color: black;">Home</a>
+      </li>
+     </ul>
   <div class="rightNavMenu">
   <ul class="nav justify-content-end">
-  <li class="nav-item">
+ 
+    <?php
+    if(isset($_SESSION['id'])){?>
+ <li class="nav-item">
     <a class="nav-link" href="ownerprofile.php">
     <?php
-    if(isset($_SESSION['id'])){
       echo $userlogin;
-      echo "</a>";
+      echo "</a>";?>
+    </a>
+  </li>
+  <?php
     }
 
 else {

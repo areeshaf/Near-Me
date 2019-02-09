@@ -52,7 +52,7 @@ if(isset($_POST['signup'])){
        
 if(!$result){
 
-          echo '<div class="alert alert-secondary" role="alert" style="width: 800px; margin-top: 50px; margin-left: 280px; height: 50px;">
+          echo '<div class="alert alert-danger" role="alert" style="width: 800px; margin-top: 50px; margin-left: 280px; height: 50px;">
                   Registration Failed!!
                 </div>';
           die();

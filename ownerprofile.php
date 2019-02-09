@@ -23,6 +23,11 @@ $query="SELECT * FROM user WHERE user_id = $id";
     <img src="images/nearmeicon.png" width="30" height="30" class="d-inline-block align-top" alt="">
     Near Me
   </a>
+  <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="home.php" style="color: black;">Home</a>
+      </li>
+     </ul> 
   <div class="rightNavMenu">
   <ul class="nav justify-content-end">
   <li class="nav-item">
@@ -40,6 +45,10 @@ $query="SELECT * FROM user WHERE user_id = $id";
   </li>
   <li class="nav-item">
     <a class="nav-link" href="ShopReg.php" style="color: black;">Register Shop</a>
+  </li>
+  <li class="nav-item">
+
+    <a class="nav-link" href="logout.php">Logout</a>
   </li>
 </ul>
 </div>
@@ -83,7 +92,7 @@ $query="SELECT * FROM user WHERE user_id = $id";
             <br>
             <span class="text-left"><?php echo $shop_add; ?></span>
             <div class="float-right">
-             <span>Mr. ABCD</span><br>
+             <span><?php echo $userlogin ?></span><br>
              <span>Contact : 9891950609</span>
           </div>
           </div>
@@ -92,40 +101,19 @@ $query="SELECT * FROM user WHERE user_id = $id";
       
       </div>
     </div>
+    
     <br>
      
     <?php } 
   } 
   ?>
    
-
-    <!-- <div class="col-sm-4">
-      <br><br><br><br>
-      <button class="btn btn-info">EDIT</button>
-      
-      <button class="btn btn-danger">DELETE</button>
-      <br><br><br><br>
-      <button class="btn btn-info">EDIT</button>
-      
-      <button class="btn btn-danger">DELETE</button>
-    </div> -->
-    
 </div>
-
+     
   </div>
 
 
 </div>
-
-
-
-
-
-
-
-
-
-
 
 
 <?php include 'includes/footer.php';?>
