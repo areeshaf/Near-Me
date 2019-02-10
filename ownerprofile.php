@@ -122,6 +122,7 @@ $query="SELECT * FROM user WHERE user_id = $id";
           $shop_desc=$row['shop_spc'];
           $shop_add=$row['shop_add'];
           $shop_img=$row['shop_image'];
+          $shop_id=$row['shop_id'];
 
        ?>
 
@@ -132,13 +133,19 @@ $query="SELECT * FROM user WHERE user_id = $id";
           <div class="col-sm-4">
              <img src='<?php echo "images/{$shop_img}" ; ?>' height="160" width="160">
           </div>
-          <div class="col-sm-8">
+          <div class="col-sm-6">
             <h3 ><?php echo $shop_name;   ?></h3>
             <h6><?php echo $shop_desc;   ?></h6>
             <br>
             <br>
             <span class="text-right"><?php echo $shop_add; ?></span>
             
+          </div>
+          <div class="col-sm-2">
+            <button class="btn btn-info float-right">Edit</button>
+            <br>
+            <br>
+             <a href="deleteShop.php?shop_name=<?php echo $shop_name; ?>"><button type="button" class="btn btn-danger float-right">Delete</button></a>
           </div>
           
         </div>
