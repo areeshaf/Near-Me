@@ -111,9 +111,15 @@ if(isset($_GET['delete'])){
       $shop_name = $row['shop_name'];
       $shop_Add= $row['shop_add'];
       $shop_Spc=$row['shop_spc'];
-      $shop_image=$row['shop_image']
+      $shop_image=$row['shop_image'];
+      $owner_id=$row['owner_id'];
       
 
+      $query2="SELECT * FROM user WHERE user_id=$owner_id";
+      $result2=mysqli_query($connect,$query2);
+      $row=mysqli_fetch_assoc($result2);
+      $owner_name=$row['user_name'];
+      $owner_contact=$row['user_contact'];
     ?>
     <div class="card">
       <div class="card-body">
@@ -127,8 +133,9 @@ if(isset($_GET['delete'])){
             <br>
             <span class="text-left"><?php echo $shop_Add; ?></span>
             <div class="float-right">
-             <span>Mr. ABCD</span><br>
-             <span>Contact : 9891950609</span>
+             <span><?php echo $owner_name ?></span><br>
+
+             <span><?php echo "Contact : $owner_contact"; ?></span>
           </div>
           </div>
         </div>

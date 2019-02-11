@@ -142,7 +142,7 @@ $query="SELECT * FROM user WHERE user_id = $id";
             
           </div>
           <div class="col-sm-2">
-            <button class="btn btn-info float-right">Edit</button>
+            <a href='<?php echo "edit_shop.php?edit={$shop_id}" ;?>'><button class="btn btn-info float-right">Edit</button></a>
             <br>
             <br>
              <a href="deleteShop.php?shop_name=<?php echo $shop_name; ?>"><button type="button" class="btn btn-danger float-right">Delete</button></a>
