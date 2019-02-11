@@ -33,6 +33,7 @@ if(isset($_POST['signup'])){
         $useremail=$_POST['useremail'];
         $userpswd=$_POST['userpswd'];
         $flag=0;
+        
         $queryy="SELECT * FROM user";
           $resultt=mysqli_query($connect,$queryy);
           while($row=mysqli_fetch_assoc($resultt)){

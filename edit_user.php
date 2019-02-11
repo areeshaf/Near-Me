@@ -1,7 +1,7 @@
 <?php  include 'includes/header.php' ;?>
 
 
-
+<?php $session_id = $_SESSION['id']; ?>
 
 
 
@@ -28,6 +28,7 @@
 <?php
         if(isset($_GET['edit'])){
               $user_id=$_GET['edit'];
+              if($user_id == $session_id){
               $fetch_query="SELECT * FROM user WHERE user_id=$user_id";
               $fetch_result=mysqli_query($connect,$fetch_query);
               $fetch_row=mysqli_fetch_assoc($fetch_result);
@@ -36,7 +37,13 @@
               $fetch_contact=$fetch_row['user_contact'];
               $fetch_email=$fetch_row['user_email'];
               $fetch_pswd=$fetch_row['user_pass'];
-              }else{
+              }
+              else{
+               header('Location: ownerprofile.php') ;
+              }
+            }
+
+              else{
                 header("Location: ownerprofile.php");
               }
 

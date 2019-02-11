@@ -97,15 +97,32 @@ if(isset($_GET['delete'])){
   <h1 class="display-4 text-center">Welcome to Near Me</h1>
 
   <br><br>
-  
+
 
  <div class="row">
 
    <div class="col-sm-7">
     <?php
+    $count_query = "SELECT * FROM shop ";
+    $count_result = mysqli_query($connect , $count_query);
+    $count = 3 ;
+    $start = 0 ;
 
-    $query="SELECT * FROM shop";
+    
+     if(isset($_GET['page'])){
+       $page = $_GET['page'];
+       if($page < 1){
+        $page = 1 ;
+       }
+       $page = $page - 1 ;
+       $start = $page * $count ;
+     }
+
+
+    $query="SELECT * FROM shop LIMIT $start , $count";
     $result=mysqli_query( $connect , $query);
+    $total_shops = mysqli_num_rows($count_result);
+    $page_no = ceil($total_shops/$count) ;
     while ($row = mysqli_fetch_assoc($result)) {
       
       $shop_name = $row['shop_name'];
@@ -168,6 +185,27 @@ if(isset($_GET['delete'])){
  </div>
 
 
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link" href="home.php?page=<?php echo $page ; ?>" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <?php 
+       $i =1 ;
+      while($i <= $page_no) {?>
+
+    <li class="page-item <?php if($page == $i -1) echo 'active' ?>"><a class="page-link" href="home.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+      
+    <?php $i++ ; }?>
+    <li class="page-item">
+      <a class="page-link" href="home.php?page=<?php echo $page + 2 ; ?>" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
   
 </div>
 
