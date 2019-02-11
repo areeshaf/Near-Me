@@ -116,6 +116,8 @@ if(isset($_GET['delete'])){
        }
        $page = $page - 1 ;
        $start = $page * $count ;
+     }else{
+      $page = 1 ;
      }
 
 
