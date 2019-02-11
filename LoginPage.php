@@ -24,6 +24,8 @@
 if(isset($_POST['login'])){
   $user_email=$_POST['email'];
   $user_pass=$_POST['password'];
+      $user_email = mysqli_real_escape_string($connect , $user_email);
+      $user_pass = mysqli_real_escape_string($connect , $user_pass);
   
 
   $query="SELECT * FROM user WHERE user_email='$user_email'";

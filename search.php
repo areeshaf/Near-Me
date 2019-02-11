@@ -69,7 +69,7 @@ else {
     if(isset($_POST['search'])){
 
       $search_this = $_POST['search_this'];
-      $search_this = mysqli_real_escape_string($search_this);
+      $search_this = mysqli_real_escape_string($connect , $search_this);
 
     $query="SELECT * FROM shop WHERE (shop_tags LIKE '%$search_this%') OR (shop_add LIKE '%$search_this%')";
     $result=mysqli_query( $connect , $query);
