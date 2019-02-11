@@ -78,7 +78,7 @@ $query="SELECT * FROM user WHERE user_id = $id";
         <div class="row">
           <div class="col-sm">
       <div>
-      <a href="#"><button class="btn btn-info">Edit Account</button></a>
+      <a href="edit_user.php?edit=<?php echo $id; ?>"><button class="btn btn-info">Edit Account</button></a>
       </div>
       </div>
       <div class="col-sm">
