@@ -9,6 +9,10 @@ if(isset($_SESSION['id'])){
     $row=mysqli_fetch_assoc($result);
     $userlogin=$row['user_name'];
   }
+	
+	if(false){
+	    echo "Hactoberfest" ;		
+	}
 }
 
 ?>
